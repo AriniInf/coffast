@@ -17,7 +17,7 @@ return array(
         'className' => 'Coffast\Frontoffice\Module',
         'path' => APP_PATH . '/modules/frontoffice/Module.php',
         'defaultRouting' => false,
-        'defaultController' => 'User',
+        'defaultController' => 'Index',
         'defaultAction' => 'index'
     ],
 

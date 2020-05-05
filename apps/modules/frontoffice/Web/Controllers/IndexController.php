@@ -12,10 +12,10 @@ use Phalcon\Mvc\Model\Query;
 class IndexController extends Controller
 {
     public function indexAction(){
-        echo "ini module front";
+        //$this->view->pick("template/index");
     }
 
     public function cobaAction(){
-        echo "ini module front coba";
+        //echo "ini module front coba";
     }
 }

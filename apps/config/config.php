@@ -22,7 +22,7 @@ return new Config(
         
         'application' => [
             'libraryDir' => APP_PATH . "/lib/",
-            'cacheDir' => APP_PATH . "/cache/",
+            'cacheDir' => getenv('APP_MODE') == 'PRODUCTION' ? "/cache/" : APP_PATH . "/cache/",
         ],
 
         'version' => '0.1',
