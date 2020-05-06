@@ -12,7 +12,8 @@ use Phalcon\Mvc\Model\Query;
 class IndexController extends Controller
 {
     public function indexAction(){
-        //$this->view->pick("template/index");
+        $this->view->pick("template/without");
+
     }
 
     public function cobaAction(){
