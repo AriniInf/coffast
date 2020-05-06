@@ -6,7 +6,7 @@ $namespace =  'Coffast\Frontoffice\Web\Controllers';
 $router->addGet('/pelanggan', [
     'namespace' => $namespace,
     'module' => 'frontoffice',
-    'controller' => 'Menu',
+    'controller' => 'Index',
     'action' => 'index'
 ]);
 
@@ -38,11 +38,18 @@ $router->addPost('/pelanggan/store', [
     'action' => 'store'
 ]);
 
-$router->addGet('/pelanggan/coba', [
+$router->addGet('/pelanggan/halaman', [
     'namespace' => $namespace,
     'module' => 'frontoffice',
     'controller' => 'Index',
-    'action' => 'coba'
+    'action' => 'halaman'
+]);
+
+$router->addGet('/pelanggan/logout', [
+    'namespace' => $namespace,
+    'module' => 'frontoffice',
+    'controller' => 'Akun',
+    'action' => 'logout'
 ]);
 
 return $router;

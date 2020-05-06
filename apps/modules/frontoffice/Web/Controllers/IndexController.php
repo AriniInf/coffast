@@ -7,16 +7,33 @@ use Phalcon\Mvc\Dispatcher;
 use Phalcon\Http\Request;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Model\Query;
-
+use Coffast\Frontoffice\Web\Models\Menu;
+use Coffast\Frontoffice\Web\Models\Akun;
 
 class IndexController extends Controller
 {
     public function indexAction(){
-        $this->view->pick("template/without");
+        $makanan = $this->db->query("SELECT menu, harga, deskripsi, gambar FROM Menu where flag = 1")->fetchAll();
+        $minuman = $this->db->query("SELECT menu, harga, deskripsi , gambar FROM Menu where flag = 0")->fetchAll();
+        //var_dump($makanan);
+        $this->view->setVars([
+            'makanan' => $makanan,
+            'minuman' => $minuman,
+        ]); 
+        $this->view->pick("halaman/belummasuk");
 
     }
 
-    public function cobaAction(){
+    public function halamanAction(){
+        $makanan = $this->db->query("SELECT menu, harga, deskripsi, gambar FROM Menu where flag = 1")->fetchAll();
+        $minuman = $this->db->query("SELECT menu, harga, deskripsi, gambar FROM Menu where flag = 0")->fetchAll();
+        $spesial = $this->db->query("SELECT TOP 3 menu, harga, deskripsi, gambar FROM Menu")->fetchAll();
+        //var_dump($makanan);
+        $this->view->setVars([
+            'makanan' => $makanan,
+            'minuman' => $minuman,
+            'spesial' => $spesial,
+        ]); 
         //echo "ini module front coba";
     }
 }

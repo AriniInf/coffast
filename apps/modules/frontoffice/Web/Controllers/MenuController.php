@@ -9,6 +9,7 @@ use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Model\Query;
 
 use Coffast\Frontoffice\Web\Models\Menu;
+use Coffast\Frontoffice\Web\Models\Akun;
 
 class MenuController extends Controller
 {
@@ -23,7 +24,14 @@ class MenuController extends Controller
         //$this->view->disable();
     }
 
-    public function cobaAction(){
-        //echo "ini module front coba";
+    public function sesAction(){
+        $makanan = $this->db->query("SELECT menu, harga, deskripsi FROM Menu where flag = 1")->fetchAll();
+        $minuman = $this->db->query("SELECT menu, harga, deskripsi FROM Menu where flag = 0")->fetchAll();
+        //var_dump($makanan);
+        $this->view->setVars([
+            'makanan' => $makanan,
+            'minuman' => $minuman,
+        ]); 
+        $this->view->pick('template/with_session');
     }
 }

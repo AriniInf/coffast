@@ -3,14 +3,12 @@
 
 <head>
     {% include 'template/header.volt' %} {% block additional_header %}{% endblock %}
-    <title>Coffast - {% block title %}{% endblock %}</title>
+    <title>Coffast</title>
 </head>
 
 <body>
 
-    {% if session.has('auth') %} {% include "template/navses.volt" %} {% else %} {% include "template/nav.volt" %} {% endif %} {% block content %}{% endblock %}
-
-
+    {% if session.has('auth') %} {% include "template/with_session.volt" %} {% else %} {% include "template/without.volt" %} {% endif %} {% block content %}{% endblock %} {% include 'template/footer.volt' %}
 </body>
 
 </html>

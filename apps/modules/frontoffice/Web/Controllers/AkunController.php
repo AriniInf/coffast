@@ -24,7 +24,7 @@ class AkunController extends Controller
 {
     public function loginAction(){
         if ($this->session->has('auth')){
-            (new Response())->redirect('/pelanggan/home')->send();
+            (new Response())->redirect('/pelanggan/ses')->send();
         }
     }
 
@@ -45,7 +45,7 @@ class AkunController extends Controller
         $user->alamat = $this->request->getPost('alamat'); 
         $user->notelp = $this->request->getPost('notelp'); 
         $user->noiden = $this->request->getPost('noiden'); 
-        $user->flag = '0';
+        $user->flag = '1';
         $user->role = '4';
         $nama = Akun::findFirst("username = '$user->username'");
         if($nama){
@@ -90,7 +90,7 @@ class AkunController extends Controller
                             'username' => $user->username,
                         ]
                     );
-                    $this->response->redirect('/pelanggan/home');
+                    $this->response->redirect('/pelanggan/halaman');
                 }
 
                 else {
@@ -109,6 +109,6 @@ class AkunController extends Controller
     public function logoutAction()
     {
         $this->session->destroy();
-        $this->response->redirect('/pelanggan/login');
+        $this->response->redirect('/pelanggan');
     }
 }
