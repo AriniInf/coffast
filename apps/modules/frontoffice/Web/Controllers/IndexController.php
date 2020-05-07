@@ -9,6 +9,8 @@ use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Model\Query;
 use Coffast\Frontoffice\Web\Models\Menu;
 use Coffast\Frontoffice\Web\Models\Akun;
+use Coffast\Frontoffice\Web\Models\Booking;
+use Coffast\Frontoffice\Web\Models\Penjualan;
 
 class IndexController extends Controller
 {
@@ -35,5 +37,42 @@ class IndexController extends Controller
             'spesial' => $spesial,
         ]); 
         //echo "ini module front coba";
+    }
+
+    public function bookAction(){
+        $menu = $this->db->query("SELECT id, menu, harga, deskripsi, gambar FROM Menu")->fetchAll();
+        $book = new Booking();
+        $book->id_akun = $this->session->get('auth')['id'];
+        $book->tanggal = $this->request->getPost('tanggal');
+        $book->waktu = $this->request->getPost('waktu');
+        $book->jumlah = $this->request->getPost('jumlah');
+        $book->catatan = $this->request->getPost('catatan');
+        if($book->save()){
+            return $this->response->redirect('/pelanggan/add-menu');
+        }
+        $this->view->setVars([
+            'menu' => $menu,
+        ]); 
+    }
+
+    public function addMenuAction(){
+        $menu = Menu::find();
+        $this->view->menu = $menu; 
+    }
+
+    public function storeMenuAction(){
+        $menus_array = explode(",", $this->request->getPost('menus'));
+        $jumlahs_array = explode(",", $this->request->getPost('jumlahs'));
+        //var_dump($jumlahs_array);
+        for($i=0; $i<count($menus_array) ; $i++)
+        {
+            $item       = new Penjualan();
+            $item->id_menu = $menus_array[$i];
+            $item->jumlah = $jumlahs_array[$i];
+            $item->waktu = date('d-m-Y');
+            //var_dump($item);
+            $item->save();
+        }
+       $this->response->redirect('/pelanggan/halaman');
     }
 }

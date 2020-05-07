@@ -45,6 +45,27 @@ $router->addGet('/pelanggan/halaman', [
     'action' => 'halaman'
 ]);
 
+$router->addPost('/pelanggan/book', [
+    'namespace' => $namespace,
+    'module' => 'frontoffice',
+    'controller' => 'Index',
+    'action' => 'book'
+]);
+
+$router->addGet('/pelanggan/add-menu', [
+    'namespace' => $namespace,
+    'module' => 'frontoffice',
+    'controller' => 'Index',
+    'action' => 'addMenu'
+]);
+
+$router->addPost('/pelanggan/store-menu', [
+    'namespace' => $namespace,
+    'module' => 'frontoffice',
+    'controller' => 'Index',
+    'action' => 'storeMenu'
+]);
+
 $router->addGet('/pelanggan/logout', [
     'namespace' => $namespace,
     'module' => 'frontoffice',

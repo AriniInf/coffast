@@ -1098,8 +1098,8 @@ section {
 
 .book-a-table .php-email-form .error-message {
     display: none;
-    color: #fff;
-    background: #ed3c0d;
+    color: rgb(0, 0, 0);
+    background: #F0F8FF;
     text-align: center;
     padding: 15px;
     font-weight: 600;
