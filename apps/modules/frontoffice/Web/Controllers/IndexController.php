@@ -37,6 +37,7 @@ class IndexController extends Controller
             'spesial' => $spesial,
         ]); 
         //echo "ini module front coba";
+        $this->view->pick('index/halaman');
     }
 
     public function bookAction(){
@@ -58,19 +59,29 @@ class IndexController extends Controller
     public function addMenuAction(){
         $menu = Menu::find();
         $this->view->menu = $menu; 
+        $this->view->pick ('index/addMenu');
     }
 
     public function storeMenuAction(){
-        $menus_array = explode(",", $this->request->getPost('menus'));
-        $jumlahs_array = explode(",", $this->request->getPost('jumlahs'));
-        //var_dump($jumlahs_array);
-        for($i=0; $i<count($menus_array) ; $i++)
+
+        $id_booking = $this->db->query("SELECT TOP 1 id from Booking order by id desc")->fetch();
+        // var_dump($id_booking);
+        $menu = $this->request->getPost('menu');
+        $jumlah = $this->request->getPost('jum');
+       
+        for($i=0; $i<count($menu) ; $i++)
         {
+            $harga = Menu::findFirst([
+            'conditions' => "id=".$menu[$i].""
+            ]);
+            // var_dump($harga);
             $item       = new Penjualan();
-            $item->id_menu = $menus_array[$i];
-            $item->jumlah = $jumlahs_array[$i];
+            $item->id_booking = $id_booking;
+            $item->id_menu = $menu[$i];
+            $item->jumlah = $jumlah[$i];
+            $item->total = $jumlah[$i]*$harga->harga;
             $item->waktu = date('d-m-Y');
-            //var_dump($item);
+            // var_dump($item);
             $item->save();
         }
        $this->response->redirect('/pelanggan/halaman');

@@ -23,13 +23,14 @@ use Coffast\Frontoffice\Web\Validator\AkunValidation;
 class AkunController extends Controller
 {
     public function loginAction(){
-        if ($this->session->has('auth')){
-            (new Response())->redirect('/pelanggan/ses')->send();
-        }
+        // if ($this->session->has('auth')){
+        //     (new Response())->redirect('/pelanggan/ses')->send();
+        // }
+        $this->view->pick('akun/login');
     }
 
     public function signupAction(){
-       
+       $this->view->pick('akun/signup');
     }
 
     public function storeAction()

@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("#multi-items").click(function() {
         var wrapper = $('.menu-fields');
         var wrapper1 = $('.jumlah-fields');
-        $(wrapper).append("<div class='form-group'><input type='text' class='form-control' name='menu'></div>");
+        $(wrapper).append("<div class ='form-group'><select name='menu''>{% for m in menu %}<option value='{{m.id}}'>{{m.menu}}</option>{% endfor %}</select></div>");
         $(wrapper1).append("<div class='form-group'><input type='text' class='form-control' name='jum'></div>");
     });
 
