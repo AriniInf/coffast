@@ -21,9 +21,9 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="../assets/login/images/logo.jpeg" alt="sing up image"></figure>
-                        <a href="/pelanggan/register" class="signup-image-link">Create an account</a>
-                        <div style="color: rgb(113, 230, 59);">
+                        <figure><img src="../assets/login/images/3 Mim Alif Transparan.png" alt="sing up image"></figure>
+                        <a href="/register" class="signup-image-link">Create an account</a>
+                        <div style="color: yellow;">
                             <p>
                                 <?php echo $this->flashSession->output() ?>
                             </p>
@@ -32,7 +32,7 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Login</h2>
-                        <form method="POST" class="register-form" id="login-form" action="/pelanggan/post-login">
+                        <form method="POST" class="register-form" id="login-form" action="/postlogin">
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username" id="username" placeholder="Username" />

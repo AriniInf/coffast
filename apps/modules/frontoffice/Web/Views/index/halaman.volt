@@ -63,7 +63,7 @@
 
             <div class="row">
 
-                <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("assets/img/about.jpg");'>
+                <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("../assets/frontoffice/img/about.jpg");'>
                     <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
                 </div>
 
@@ -155,7 +155,7 @@
                 {% for spes in spesial %}
                 <div class="row event-item">
                     <div class="col-lg-6">
-                        <img src="assets/img/event-birthday.jpg" class="img-fluid" alt="">
+                        <img class="img-fluid" src="../../images/menu/{{spes['gambar']}}" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 content">
                         <h3>{{spes['menu']}}</h3>

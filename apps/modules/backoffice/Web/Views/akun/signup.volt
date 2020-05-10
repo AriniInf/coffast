@@ -22,10 +22,10 @@
                 <div class="signin-content ">
                     <div class="signin-image ">
                         <figure><img src="../assets/login/images/logo1.jpg " alt="sing up image "></figure>
-                        <a href="/pelanggan/login" class="signup-image-link ">already a member</a>
+                        <a href="/" class="signup-image-link ">already a member</a>
                         <!-- <div style="color: red;">
                             <p>
-                                <?= $message ?>
+                                {{message}}
                             </p>
                         </div> -->
                         <div style="color: red">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="signin-form ">
                         <h2 class="form-title ">Register</h2>
-                        <form method="POST" class="data-form" action="/pelanggan/store">
+                        <form method="POST" class="data-form" action="/register">
                             <div class="form-group ">
                                 <label for="username "><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username" id="username" placeholder="Username" required/>
