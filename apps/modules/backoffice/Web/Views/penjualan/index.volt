@@ -8,7 +8,9 @@
             <div class="col-sm-7" style="color: blue;">
                 <?php echo $this->flashSession->output() ?>
             </div>
-            
+            <div class="col-sm-1">
+                <button style="float: right;" type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#add-data">Tambah</button>
+            </div>
             <div class="modal fade" id="add-data">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -20,33 +22,40 @@
                         </div>
                         <form class="form-horizontal" action="/admin/add-penjualan" method="post" enctype="multipart/form-data" role="form">
                             <div class="modal-body">
-                                <div class="form-group">
-                                    <label class="col-lg-2 col-sm-2 control-label">Penjualan</label>
+                                 <div class="form-group">
+                                    <label class="col-lg-2 col-sm-2 control-label">Nama Pemesan</label>
                                     <div class="col-lg">
-                                        <select class='form-control input-md' name='id_produk' id='id_produk' required>
-                                        <option value="">Pilih Produk</option>
-                                        {% for pro in produk %}
-                                        <option value="{{pro.id}}">{{pro.produk}}</option>
-                                        {% endfor %}
-                                    </select>
+                                        <input type="text" class="form-control" id="nama_pemesan" name="nama_pemesan" value="" required>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-lg-2 col-sm-2 control-label">Tanggal</label>
-                                    <div class="col-lg">
-                                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="" required>
+                               <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                <div class="menu-fields">
+                                    <div class='form-group'>
+                                        <label class="col-lg-2 col-sm-2 control-label">Menu</label>
+                                        <select name='menu[]'>
+                                            {% for m in menu %}
+                                            <option value={{m.id}}>{{m.menu}}</option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-lg-2 col-sm-2 control-label">Jumlah</label>
-                                    <div class="col-lg">
-                                        <input type="text" class="form-control" id="jumlah" name="jumlah" value="" required>
+                               </div>
+                               <div class="col-lg-6">
+                                <div class="jumlah-fields">
+                                    <div class='form-group'>
+                                        <label class="col-lg-2 col-sm-2 control-label">Jumlah</label>
+                                        <input type='text' class='form-control' name='jum[]'>
                                     </div>
                                 </div>
+                            </div>
+                            </div>
                             </div>
                             <div class="modal-footer form-group">
                                 <button class="btn btn-info" type="submit">Simpan</button>
                                 <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
+                                 <div class="col-sm-6">
+                                <a type="button" class="btn btn-info" onclick="return myFunction()"><i class="fa fa-plus"></i><span>Tambah Menu</span></a>
                             </div>
                         </form>
                     </div>
@@ -67,23 +76,27 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Produk</th>
-                    <th>Tanggal</th>
-                    <th>Stok</th>
+                    <th>ID Booking</th>
+                    <th>Menu</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                    <th>Waktu</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $no = 1;?>{% for beli in penjualan %}
+                <?php $no = 1;?>{% for j in penjualan %}
                 <tr>
                     <td>
                         <?php echo $no++ ?>
                     </td>
-                    <td>{{beli['produk']}}</td>
-                    <td>{{beli['tanggal']}}</td>
-                    <td>{{beli['jumlah']}}</td>
+                    <td>{{j['id_booking']}}</td>
+                    <td>{{j['id_menu']}}</td>
+                    <td>{{j['jumlah']}}</td>
+                    <td>{{j['total']}}</td>
+                    <td>{{j['waktu']}}</td>
                     <td>
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#edit-data{{beli['id']}}"><i class="fas fa-pencil-alt">
+                        <!-- <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#edit-data{{beli['id']}}"><i class="fas fa-pencil-alt">
                         </i>Edit</button>
 
                         <div class="modal fade" id="edit-data{{beli['id']}}">
@@ -127,7 +140,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </td>
                 </tr>
                 {% endfor %}
@@ -135,9 +148,11 @@
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Produk</th>
-                    <th>Tanggal</th>
-                    <th>Stok</th>
+                    <th>ID Booking</th>
+                    <th>Menu</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                    <th>Waktu</th>
                     <th>Aksi</th>
                 </tr>
             </tfoot>
@@ -147,5 +162,12 @@
 </div>
 
 </body>
-
+<script>
+function myFunction() {
+  var wrapper = $('.menu-fields');
+        var wrapper1 = $('.jumlah-fields');
+        $(wrapper).append("<div class ='form-group'><select name='menu[]''>{% for m in menu %}<option value='{{m.id}}'>{{m.menu}}</option>{% endfor %}</select></div>");
+        $(wrapper1).append("<div class='form-group'><input type='text' class='form-control' name='jum[]'></div>");
+}
+</script>
 {% endblock %}

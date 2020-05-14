@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+a:3:{i:0;s:7002:"<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TigaMimAlif</title>
+    <title>Tiga Mim Alif</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -41,7 +41,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-                        <a href="/karyawan/edit-profile" class="dropdown-item ">Edit Profile
+                        <a href="/admin/edit-profile" class="dropdown-item ">Edit Profile
                         </a>
                         <div class="dropdown-divider "></div>
                         <a href="/logout " class="dropdown-item ">Logout
@@ -65,7 +65,7 @@
                         <img src="../assets/dist/img/avatar5.png" class="img-circle elevation-2 " alt="User Image ">
                     </div>
                     <div class="info ">
-                        <a href="/karyawan/lihat-profil" class="d-block "> {{ session.get('auth')['username'] }}</a>
+                        <a href="/admin/lihat-profil" class="d-block "> <?= $this->session->get('auth')['username'] ?></a>
                     </div>
                 </div>
 
@@ -73,12 +73,10 @@
                 <nav class="mt-2 ">
                     <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview " role="menu " data-accordion="false ">
                         <li class="nav-item has-treeview menu-open ">
-                            {% if session.get('auth')['role'] == 3 %}
-                            <a href="/karyawan/dashboard" class="nav-link ">
-                                {% elseif  session.get('auth')['role']  == 1 %}
-                                <a href="/pemilik/dashboard" class="nav-link "> 
-                            {% endif %}
-                            
+                            <?php if ($this->session->get('auth')['role'] == 2) { ?>
+                            <a href="/admin/dashboard " class="nav-link ">
+                            <?php } elseif ($this->session->get('auth')['role'] == 3) { ?>
+                                <a href="/karyawan/dashboard " class="nav-link "> <?php } ?>
                             <i class="nav-icon fas fa-tachometer-alt "></i>
                             <p>
                                 DASHBOARD
@@ -86,32 +84,41 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/menu" class="nav-link ">
+                            <a href="/admin/list-produk" class="nav-link ">
                                 <i class="nav-icon fas fa-copy "></i>
                                 <p>
-                                    Menu
+                                    PRODUK
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-kategori" class="nav-link ">
+                            <a href="/admin/list-kategori" class="nav-link ">
                                 <i class="nav-icon fas fa-chart-pie "></i>
                                 <p>
                                     KATEGORI
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-header">KARYAWAN</li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-karyawan" class="nav-link ">
-                                <i class="nav-icon fas fa-chart-pie "></i>
+                            <a href="/admin/list-karyawan" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    KARYAWAN
+                                    Karyawan
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview ">
+                            <a href="/admin/list-belum-karyawan" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Belum Karyawan
                                 </p>
                             </a>
                         </li>
                         <li class="nav-header">TRANSAKSI</li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-pembelian" class="nav-link ">
+                            <a href="/admin/list-pembelian" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Pembelian
@@ -119,7 +126,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-penjualan" class="nav-link ">
+                            <a href="/admin/list-penjualan" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Penjualan
@@ -139,7 +146,7 @@
             <section class="content ">
                 <div class="container-fluid ">
                     <!-- Small boxes (Stat box) -->
-                    {% block content %}{% endblock %}
+                    ";s:7:"content";N;i:1;s:2067:"
                 </div>
                 <!-- /.container-fluid -->
             </section>
@@ -194,4 +201,4 @@
     </script>
 </body>
 
-</html>
+</html>";}

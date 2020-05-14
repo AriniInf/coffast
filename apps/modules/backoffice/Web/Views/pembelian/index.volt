@@ -1,32 +1,34 @@
-{% extends "template/mainadmin.volt" %} {% block content %}
+{% extends "template/mainkaryawan.volt" %} {% block content %}
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-4">
-                <h1 class="m-0 text-dark">List Penjualan</h1>
+                <h1 class="m-0 text-dark">List Pembelian</h1>
             </div>
             <div class="col-sm-7" style="color: blue;">
                 <?php echo $this->flashSession->output() ?>
             </div>
-            
+            <div class="col-sm-1">
+                <button style="float: right;" type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#add-data">Tambah</button>
+            </div>
             <div class="modal fade" id="add-data">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Tambah Penjualan</h4>
+                            <h4 class="modal-title">Tambah Pembelian</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                         </div>
-                        <form class="form-horizontal" action="/admin/add-penjualan" method="post" enctype="multipart/form-data" role="form">
+                        <form class="form-horizontal" action="/admin/add-pembelian" method="post" enctype="multipart/form-data" role="form">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label class="col-lg-2 col-sm-2 control-label">Penjualan</label>
+                                    <label class="col-lg-2 col-sm-2 control-label">Pembelian</label>
                                     <div class="col-lg">
                                         <select class='form-control input-md' name='id_produk' id='id_produk' required>
                                         <option value="">Pilih Produk</option>
-                                        {% for pro in produk %}
-                                        <option value="{{pro.id}}">{{pro.produk}}</option>
+                                        {% for b in barang %}
+                                        <option value="{{b.id}}">{{b.barang}}</option>
                                         {% endfor %}
                                     </select>
                                     </div>
@@ -74,28 +76,28 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = 1;?>{% for beli in penjualan %}
+                <?php $no = 1;?>{% for beli in pembelian %}
                 <tr>
                     <td>
                         <?php echo $no++ ?>
                     </td>
-                    <td>{{beli['produk']}}</td>
-                    <td>{{beli['tanggal']}}</td>
+                    <td>{{beli['pembelian']}}</td>
+                    <td>{{beli['waktu']}}</td>
                     <td>{{beli['jumlah']}}</td>
-                    <td>
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#edit-data{{beli['id']}}"><i class="fas fa-pencil-alt">
-                        </i>Edit</button>
-
+                    <td> <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#edit-data{{beli['id']}}">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Edit</button>
                         <div class="modal fade" id="edit-data{{beli['id']}}">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Update Penjualan</h4>
+                                        <h4 class="modal-title">Update Pembelian</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                                     </div>
-                                    <form class="form-horizontal" action="/admin/edit-penjualan" method="post" enctype="multipart/form-data" role="form">
+                                    <form class="form-horizontal" action="/admin/edit-pembelian" method="post" enctype="multipart/form-data" role="form">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <div class="col-lg">
@@ -104,13 +106,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-lg">
-                                                    <input type="hidden" class="form-control" id="id_produk" name="id_produk" value="{{beli['id_produk']}}">
+                                                    <input type="hidden" class="form-control" id="id_produk" name="id_produk" value="{{beli['id_barang']}}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 col-sm-2 control-label">Tanggal</label>
                                                 <div class="col-lg">
-                                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{beli['tanggal']}}" required>
+                                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{beli['waktu']}}" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -142,6 +144,7 @@
                 </tr>
             </tfoot>
         </table>
+
     </div>
     <!-- /.card-body -->
 </div>

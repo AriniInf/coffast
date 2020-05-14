@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a:3:{i:0;s:6608:"<!DOCTYPE html>
 <html>
 
 <head>
@@ -65,7 +65,7 @@
                         <img src="../assets/dist/img/avatar5.png" class="img-circle elevation-2 " alt="User Image ">
                     </div>
                     <div class="info ">
-                        <a href="/karyawan/lihat-profil" class="d-block "> {{ session.get('auth')['username'] }}</a>
+                        <a href="/karyawan/lihat-profil" class="d-block "> <?= $this->session->get('auth')['username'] ?></a>
                     </div>
                 </div>
 
@@ -73,11 +73,11 @@
                 <nav class="mt-2 ">
                     <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview " role="menu " data-accordion="false ">
                         <li class="nav-item has-treeview menu-open ">
-                            {% if session.get('auth')['role'] == 3 %}
+                            <?php if ($this->session->get('auth')['role'] == 3) { ?>
                             <a href="/karyawan/dashboard" class="nav-link ">
-                                {% elseif  session.get('auth')['role']  == 1 %}
+                                <?php } elseif ($this->session->get('auth')['role'] == 1) { ?>
                                 <a href="/pemilik/dashboard" class="nav-link "> 
-                            {% endif %}
+                            <?php } ?>
                             
                             <i class="nav-icon fas fa-tachometer-alt "></i>
                             <p>
@@ -139,7 +139,7 @@
             <section class="content ">
                 <div class="container-fluid ">
                     <!-- Small boxes (Stat box) -->
-                    {% block content %}{% endblock %}
+                    ";s:7:"content";N;i:1;s:2067:"
                 </div>
                 <!-- /.container-fluid -->
             </section>
@@ -194,4 +194,4 @@
     </script>
 </body>
 
-</html>
+</html>";}

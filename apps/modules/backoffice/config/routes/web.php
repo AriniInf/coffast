@@ -58,6 +58,20 @@ $router->addGet('/karyawan/menu', [
     'action' => 'index'
 ]);
 
+$router->addGet('/karyawan/list-pembelian', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Pembelian',
+    'action' => 'index'
+]);
+
+$router->addGet('/karyawan/list-penjualan', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Penjualan',
+    'action' => 'index'
+]);
+
 $router->addGet('/menu', [
     'namespace' => $namespace,
     'module' => 'backoffice',
@@ -70,6 +84,13 @@ $router->addPost('/tambah-menu', [
     'module' => 'backoffice',
     'controller' => 'Menu',
     'action' => 'tambahMenu'
+]);
+
+$router->addGet('/admin/dashboard', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Dashboard',
+    'action' => 'dashboardAdmin'
 ]);
 
 

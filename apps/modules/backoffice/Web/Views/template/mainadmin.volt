@@ -73,10 +73,10 @@
                 <nav class="mt-2 ">
                     <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview " role="menu " data-accordion="false ">
                         <li class="nav-item has-treeview menu-open ">
-                            {% if session.get('auth')['id_jabatan'] == 1 %}
+                            {% if session.get('auth')['role'] == 2 %}
                             <a href="/admin/dashboard " class="nav-link ">
-                            {% elseif  session.get('auth')['id_jabatan']  == 2 %}
-                                <a href="/karyawan/dashboard " class="nav-link "></a> {% endif %}
+                            {% elseif  session.get('auth')['role']  == 3 %}
+                                <a href="/karyawan/dashboard " class="nav-link "> {% endif %}
                             <i class="nav-icon fas fa-tachometer-alt "></i>
                             <p>
                                 DASHBOARD

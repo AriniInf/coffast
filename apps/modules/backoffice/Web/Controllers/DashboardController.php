@@ -12,6 +12,9 @@ use Coffast\Backoffice\Web\Models\Menu;
 
 class DashboardController extends Controller{
     public function indexAction(){
-
+    	$this->view->pick('dashboard/index');
+    }
+    public function dashboardAdminAction(){
+    	$this->view->pick('admin/dashboard');
     }
 }

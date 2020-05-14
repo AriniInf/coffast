@@ -26,6 +26,7 @@ class MenuController extends Controller
             'menu' => $menu,
             'kategori' => $kategori,
         ]);
+        $this->view->pick('menu/index');
     }
 
     public function tambahMenuAction(){
