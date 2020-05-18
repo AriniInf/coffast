@@ -41,7 +41,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-                        <a href="/admin/edit-profile" class="dropdown-item ">Edit Profile
+                        <a href="/pemilik/edit-profile" class="dropdown-item ">Edit Profile
                         </a>
                         <div class="dropdown-divider "></div>
                         <a href="/logout " class="dropdown-item ">Logout
@@ -65,7 +65,7 @@
                         <img src="../assets/dist/img/avatar5.png" class="img-circle elevation-2 " alt="User Image ">
                     </div>
                     <div class="info ">
-                        <a href="/admin/lihat-profil" class="d-block "> {{ session.get('auth')['username'] }}</a>
+                        <a href="/pemilik/lihat-profil" class="d-block "> {{ session.get('auth')['username'] }}</a>
                     </div>
                 </div>
 
@@ -86,32 +86,32 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/admin/list-produk" class="nav-link ">
+                            <a href="/pemilik/list-menu" class="nav-link ">
                                 <i class="nav-icon fas fa-copy "></i>
                                 <p>
-                                    PRODUK
+                                    MENU
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/admin/list-kategori" class="nav-link ">
+                            <a href="/pemilik/list-admin" class="nav-link ">
                                 <i class="nav-icon fas fa-chart-pie "></i>
                                 <p>
-                                    KATEGORI
+                                    ADMIN
                                 </p>
                             </a>
                         </li>
                         <li class="nav-header">pegawai</li>
                         <li class="nav-item has-treeview ">
-                            <a href="/admin/list-pegawai" class="nav-link ">
+                            <a href="/pemilik/list-pegawai" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    pegawai
+                                    PEGAWAI
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/admin/list-belum-pegawai" class="nav-link ">
+                            <a href="/pemilik/list-belum-pegawai" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Belum pegawai
@@ -120,7 +120,7 @@
                         </li>
                         <li class="nav-header">TRANSAKSI</li>
                         <li class="nav-item has-treeview ">
-                            <a href="/admin/list-pembelian" class="nav-link ">
+                            <a href="/emilik/list-pembelian" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Pembelian
@@ -128,7 +128,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/admin/list-penjualan" class="nav-link ">
+                            <a href="/pemilik/list-penjualan" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Penjualan

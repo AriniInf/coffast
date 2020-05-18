@@ -39,7 +39,7 @@ class MenuController extends Controller
             $menu->flag = $this->request->getPost('flag');
 
             if($menu->save()){
-                $this->response->redirect('karyawan/menu');
+                $this->response->redirect('pegawai/menu');
             }
         }
     }
@@ -60,7 +60,7 @@ class MenuController extends Controller
             $menu->gambar = $img;  
                      
             if($menu->update()){
-                $this->response->redirect('karyawan/menu');
+                $this->response->redirect('pegawai/menu');
             }
         }
     }
@@ -68,7 +68,7 @@ class MenuController extends Controller
     public function hapusMenuAction($id){
         $this->db->query("delete from Menu where id='".$id."'");
         $this->flashSession->success('Menu berhasil dihapus');
-        $this->response->redirect('/karyawan/menu');
+        $this->response->redirect('/pegawai/menu');
     }
 
     public function cobaAction(){

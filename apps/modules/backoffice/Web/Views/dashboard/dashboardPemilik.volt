@@ -1,4 +1,4 @@
-{% extends "template/mainkaryawan.volt" %} {% block content %}
+{% extends "template/mainpemilik.volt" %} {% block content %}
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/karyawan/dashboard">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/pegawai/dashboard">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div>
@@ -17,7 +17,11 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+{% for fav in favorit %}
 
+<p>{{fav['menu']}}</p>
+
+{% endfor %}
 
 </div>
 <!-- /.row -->

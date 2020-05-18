@@ -1,4 +1,4 @@
-{% extends "template/mainkaryawan.volt" %} {% block content %}
+{% extends "template/mainpegawai.volt" %} {% block content %}
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -107,7 +107,7 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                     </div>
-                                    <form class="form-horizontal" action="/karyawan/edit-menu" method="post" enctype="multipart/form-data">
+                                    <form class="form-horizontal" action="/pegawai/edit-menu" method="post" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <div class="col-lg">
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a type="button" class="btn btn-danger btn-md" href="/karyawan/hapus-menu/{{m['id']}}" onclick="return deleteDialog();"><i class="fas fa-trash">
+                        <a type="button" class="btn btn-danger btn-md" href="/pegawai/hapus-menu/{{m['id']}}" onclick="return deleteDialog();"><i class="fas fa-trash">
                         </i> Hapus</a>
                     </td>
                 </tr>

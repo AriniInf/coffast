@@ -41,7 +41,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-                        <a href="/karyawan/edit-profile" class="dropdown-item ">Edit Profile
+                        <a href="/pegawai/edit-profile" class="dropdown-item ">Edit Profile
                         </a>
                         <div class="dropdown-divider "></div>
                         <a href="/logout " class="dropdown-item ">Logout
@@ -65,7 +65,7 @@
                         <img src="../assets/dist/img/avatar5.png" class="img-circle elevation-2 " alt="User Image ">
                     </div>
                     <div class="info ">
-                        <a href="/karyawan/lihat-profil" class="d-block "> {{ session.get('auth')['username'] }}</a>
+                        <a href="/pegawai/lihat-profil" class="d-block "> {{ session.get('auth')['username'] }}</a>
                     </div>
                 </div>
 
@@ -73,12 +73,12 @@
                 <nav class="mt-2 ">
                     <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview " role="menu " data-accordion="false ">
                         <li class="nav-item has-treeview menu-open ">
-                            {% if session.get('auth')['role'] == 3 %}
-                            <a href="/karyawan/dashboard" class="nav-link ">
-                                {% elseif  session.get('auth')['role']  == 1 %}
-                                <a href="/pemilik/dashboard" class="nav-link "> 
-                            {% endif %}
-                            
+                            {% if session.get('auth')['role'] == 1 %}
+                            <a href="/pemilik/dashboard " class="nav-link ">
+                            {% elseif session.get('auth')['role'] == 2 %}
+                            <a href="/admin/dashboard " class="nav-link ">
+                            {% elseif  session.get('auth')['role']  == 3 %}
+                                <a href="/pegawai/dashboard " class="nav-link "> {% endif %}
                             <i class="nav-icon fas fa-tachometer-alt "></i>
                             <p>
                                 DASHBOARD
@@ -86,7 +86,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/menu" class="nav-link ">
+                            <a href="/pegawai/menu" class="nav-link ">
                                 <i class="nav-icon fas fa-copy "></i>
                                 <p>
                                     Menu
@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-kategori" class="nav-link ">
+                            <a href="/pegawai/list-kategori" class="nav-link ">
                                 <i class="nav-icon fas fa-chart-pie "></i>
                                 <p>
                                     KATEGORI
@@ -102,16 +102,16 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-karyawan" class="nav-link ">
+                            <a href="/pegawai/list-pegawai" class="nav-link ">
                                 <i class="nav-icon fas fa-chart-pie "></i>
                                 <p>
-                                    KARYAWAN
+                                    pegawai
                                 </p>
                             </a>
                         </li>
                         <li class="nav-header">TRANSAKSI</li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-pembelian" class="nav-link ">
+                            <a href="/pegawai/list-pembelian" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Pembelian
@@ -119,7 +119,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/karyawan/list-penjualan" class="nav-link ">
+                            <a href="/pegawai/list-penjualan" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Penjualan

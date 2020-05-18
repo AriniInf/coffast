@@ -99,7 +99,7 @@
                                         {{ session.get('auth')['username'] }}
                                     </div>
                                     <div class="widget-subheading">
-                                        Karyawan
+                                        pegawai
                                     </div>
                                 </div>
                             </div>
@@ -476,10 +476,10 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="app-sidebar__heading">Karyawan</li>
+                            <li class="app-sidebar__heading">pegawai</li>
                             <li>
                                 <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon pe-7s-display2"></i> List Karyawan
+                                    <i class="metismenu-icon pe-7s-display2"></i> List pegawai
                                 </a>
                             </li>
 

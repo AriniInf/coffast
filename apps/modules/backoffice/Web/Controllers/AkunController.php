@@ -47,7 +47,7 @@ class AkunController extends Controller
         $user->notelp = $this->request->getPost('notelp'); 
         $user->noiden = $this->request->getPost('noiden'); 
         $user->flag = '1';
-        $user->role = '3';
+        $user->role = '1';
         $nama = Akun::findFirst("username = '$user->username'");
         if($nama){
             $this->flashSession->error("username sudah digunakan");
@@ -89,7 +89,7 @@ class AkunController extends Controller
                         $this->response->redirect('/admin/dashboard');
                     }
                     else if($user->role == 3){
-                        $this->response->redirect('/karyawan/dashboard');
+                        $this->response->redirect('/pegawai/dashboard');
                     }
                 }
 

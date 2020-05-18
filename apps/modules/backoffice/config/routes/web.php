@@ -44,35 +44,62 @@ $router->addGet('/logout', [
     'action' => 'logout'
 ]);
 
-$router->addGet('/karyawan/dashboard', [
+$router->addGet('/pemilik/dashboard', [
     'namespace' => $namespace,
     'module' => 'backoffice',
     'controller' => 'Dashboard',
-    'action' => 'index'
+    'action' => 'dashboardPemilik'
 ]);
 
-$router->addGet('/karyawan/menu', [
+$router->addGet('/pemilik/list-admin', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Admin',
+    'action' => 'index'
+]);
+$router->addPost('/pemilik/tambah-admin', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Admin',
+    'action' => 'tambahAdmin'
+]);
+
+$router->addGet('/pegawai/dashboard', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Dashboard',
+    'action' => 'dashboardPegawai'
+]);
+
+$router->addGet('/admin/dashboard', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Dashboard',
+    'action' => 'dashboardAdmin'
+]);
+
+$router->addGet('/pegawai/menu', [
     'namespace' => $namespace,
     'module' => 'backoffice',
     'controller' => 'Menu',
     'action' => 'index'
 ]);
 
-$router->addGet('/karyawan/hapus-menu/{id}', [
+$router->addGet('/pegawai/hapus-menu/{id}', [
     'namespace' => $namespace,
     'module' => 'backoffice',
     'controller' => 'Menu',
     'action' => 'hapusMenu'
 ]);
 
-$router->addGet('/karyawan/list-pembelian', [
+$router->addGet('/pegawai/list-pembelian', [
     'namespace' => $namespace,
     'module' => 'backoffice',
     'controller' => 'Pembelian',
     'action' => 'index'
 ]);
 
-$router->addGet('/karyawan/list-penjualan', [
+$router->addGet('/pegawai/list-penjualan', [
     'namespace' => $namespace,
     'module' => 'backoffice',
     'controller' => 'Penjualan',
@@ -93,19 +120,11 @@ $router->addPost('/tambah-menu', [
     'action' => 'tambahMenu'
 ]);
 
-$router->addPost('/karyawan/edit-menu', [
+$router->addPost('/pegawai/edit-menu', [
     'namespace' => $namespace,
     'module' => 'backoffice',
     'controller' => 'Menu',
     'action' => 'editMenu'
 ]);
-
-$router->addGet('/admin/dashboard', [
-    'namespace' => $namespace,
-    'module' => 'backoffice',
-    'controller' => 'Dashboard',
-    'action' => 'dashboardAdmin'
-]);
-
 
 return $router;

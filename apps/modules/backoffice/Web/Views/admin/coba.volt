@@ -1,1 +1,0 @@
-{% extends "template/mainadmin.volt" %} {% block content %} {% endblock %}
