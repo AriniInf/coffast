@@ -58,6 +58,13 @@ $router->addGet('/karyawan/menu', [
     'action' => 'index'
 ]);
 
+$router->addGet('/karyawan/hapus-menu/{id}', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Menu',
+    'action' => 'hapusMenu'
+]);
+
 $router->addGet('/karyawan/list-pembelian', [
     'namespace' => $namespace,
     'module' => 'backoffice',
@@ -84,6 +91,13 @@ $router->addPost('/tambah-menu', [
     'module' => 'backoffice',
     'controller' => 'Menu',
     'action' => 'tambahMenu'
+]);
+
+$router->addPost('/karyawan/edit-menu', [
+    'namespace' => $namespace,
+    'module' => 'backoffice',
+    'controller' => 'Menu',
+    'action' => 'editMenu'
 ]);
 
 $router->addGet('/admin/dashboard', [

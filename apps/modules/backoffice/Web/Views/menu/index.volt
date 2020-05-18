@@ -27,9 +27,8 @@
                                     <div class="col-lg">
                                         <select class='form-control input-md' name='flag' id='flag'>
                                         <option value="">Pilih Kategori</option>
-                                        {% for kat in kategori %}
-                                        <option value="{{kat['flag']}}">{{kat['flag']}}</option>
-                                        {% endfor %}
+                                        <option value="1">Makanan</option>
+                                        <option value="0">Minuman</option>
                                     </select>
                                     </div>
                                 </div>
@@ -98,38 +97,45 @@
                     <td>{{ m['deskripsi']}}</td>
                     <td>
                         <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#edit-data{{m['id']}}"><i class="fas fa-pencil-alt">
-                        </i>  Edit</button>
-                        <!-- <div class="modal fade" id="edit-data{{pro['id']}}">
+                        </i>Edit</button>
+                        <div class="modal fade" id="edit-data{{m['id']}}">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Update Karyawan</h4>
+                                        <h4 class="modal-title">Update Menu</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                     </div>
-                                    <form class="form-horizontal" action="/admin/edit-produk" method="post" enctype="multipart/form-data" role="form">
+                                    <form class="form-horizontal" action="/karyawan/edit-menu" method="post" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <div class="col-lg">
-                                                    <input type="hidden" class="form-control" id="id" name="id" value="{{pro['id']}}">
+                                                    <input type="hidden" class="form-control" id="id" name="id" value="{{m['id']}}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label class="col-lg-2 col-sm-2 control-label">Menu</label>
                                                 <div class="col-lg">
-                                                    <input type="hidden" class="form-control" id="id_kategori" name="id_kategori" value="{{pro['id_kategori']}}">
+                                                    <input type="text" class="form-control" id="menu" name="menu" value="{{m['menu']}}">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-lg-2 col-sm-2 control-label">Produk</label>
+                                                <label class="col-lg-2 col-sm-2 control-label">Deskripsi</label>
                                                 <div class="col-lg">
-                                                    <input type="text" class="form-control" id="produk" name="produk" value="{{pro['produk']}}" required>
+                                                    <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{m['deskripsi']}}" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-lg-2 col-sm-2 control-label">Stok</label>
+                                                <label class="col-lg-2 col-sm-2 control-label">Harga</label>
                                                 <div class="col-lg">
-                                                    <input type="text" class="form-control" id="stok" name="stok" value="{{pro['stok']}}" required>
+                                                    <input type="text" class="form-control" id="harga" name="harga" value="{{m['harga']}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-2 col-sm-2 control-label">Gambar</label>
+                                                <div class="col-lg">
+                                                    <input type="file" class="form-control" id="gambar" value="{{m['gambar']}}" name="gambar">
                                                 </div>
                                             </div>
                                         </div>
@@ -140,8 +146,8 @@
                                     </form>
                                 </div>
                             </div>
-                        </div> -->
-                        <a type="button" class="btn btn-danger btn-md" href="/admin/delete-produk/{{m['id']}}" onclick="return deleteDialog();"><i class="fas fa-trash">
+                        </div>
+                        <a type="button" class="btn btn-danger btn-md" href="/karyawan/hapus-menu/{{m['id']}}" onclick="return deleteDialog();"><i class="fas fa-trash">
                         </i> Hapus</a>
                     </td>
                 </tr>

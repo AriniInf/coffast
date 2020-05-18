@@ -54,20 +54,10 @@ class AkunController extends Controller
             return $this->response->redirect('/register');
         }
         else{
-            
-            // if(count($this->validator->validate($_POST))){
-            //     foreach ($this->validator->validate($_POST) as $message)
-            //         $keluaran = $keluaran.$message. ' , ';
-            //         //$this->view->message = $keluaran;
-            //         $alamat = "/register/?alamat=".$keluaran;
-            //         return $this->response->redirect($alamat);
-            // }
-            // else{
-            
-                $user->save();
-                $this->flashSession->error("Anda telah berhasil mendaftar tunggu verifikasi dari admin");
-                $this->response->redirect('/');
-            // }
+            $user->save();
+            $this->flashSession->error("Anda telah berhasil mendaftar tunggu verifikasi dari admin");
+            $this->response->redirect('/');
+        // }
         }         
     }
 

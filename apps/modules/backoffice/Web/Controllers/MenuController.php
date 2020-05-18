@@ -14,13 +14,6 @@ use Coffast\Backoffice\Web\Models\Menu;
 class MenuController extends Controller
 {
     public function indexAction(){
-        $kategori = $this->db->query("SELECT DISTINCT flag from Menu")->fetchAll();
-        if($kategori == 1){
-            print_r('Makanan');
-        }
-        else{
-            print_r('Minuman');
-        }
         $menu = $this->db->query("SELECT * FROM Menu")->fetchAll();
         $this->view->setVars([
             'menu' => $menu,
@@ -44,9 +37,38 @@ class MenuController extends Controller
             $menu->deskripsi = $this->request->getPost('deskripsi');
             $menu->gambar = $img;   
             $menu->flag = $this->request->getPost('flag');
-            //var_dump($menu);
-            $menu->save();
+
+            if($menu->save()){
+                $this->response->redirect('karyawan/menu');
+            }
         }
+    }
+
+    public function editMenuAction(){
+        $dir = 'images/menu/';
+	    $file = $dir . basename($_FILES['gambar']['name']);
+        $filetmp = $_FILES['gambar']['tmp_name'];
+        $upload = move_uploaded_file($filetmp, $file);
+	    echo '<pre>';
+	    if ($upload)    {	  
+            $img = $_FILES['gambar']['name'];
+            $id = $this->request->getPost('id');
+            $menu = Menu::findFirst("id='$id'"); 
+            $menu->menu = $this->request->getPost('menu');
+            $menu->harga = $this->request->getPost('harga');
+            $menu->deskripsi = $this->request->getPost('deskripsi');
+            $menu->gambar = $img;  
+                     
+            if($menu->update()){
+                $this->response->redirect('karyawan/menu');
+            }
+        }
+    }
+
+    public function hapusMenuAction($id){
+        $this->db->query("delete from Menu where id='".$id."'");
+        $this->flashSession->success('Menu berhasil dihapus');
+        $this->response->redirect('/karyawan/menu');
     }
 
     public function cobaAction(){
