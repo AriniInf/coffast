@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tiga Mim Alif</title>
+    <title>Coffast</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -101,7 +101,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">pegawai</li>
+                        <li class="nav-header">PEGAWAI</li>
                         <li class="nav-item has-treeview ">
                             <a href="/pemilik/list-pegawai" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
@@ -111,30 +111,23 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/pemilik/list-belum-pegawai" class="nav-link ">
+                            <a href="/pemilik/belum-pegawai" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Belum pegawai
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">TRANSAKSI</li>
+                        <li class="nav-header">Laporan</li>
                         <li class="nav-item has-treeview ">
-                            <a href="/emilik/list-pembelian" class="nav-link ">
+                            <a href="/pemilik/laporan" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Pembelian
+                                    Transaksi
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview ">
-                            <a href="/pemilik/list-penjualan" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Penjualan
-                                </p>
-                            </a>
-                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

@@ -13,6 +13,16 @@ use Coffast\Backoffice\Web\Models\Menu;
 
 class MenuController extends Controller
 {
+    public function initialize()
+    {
+        $auth = $this->session->has('auth');
+
+        if (! $auth) {
+            $this->response->redirect('/');
+        }
+        
+    }
+    
     public function indexAction(){
         $menu = $this->db->query("SELECT * FROM Menu")->fetchAll();
         $this->view->setVars([
@@ -20,6 +30,24 @@ class MenuController extends Controller
             'kategori' => $kategori,
         ]);
         $this->view->pick('menu/index');
+    }
+
+    public function pegawaiAction(){
+        $menu = $this->db->query("SELECT * FROM Menu")->fetchAll();
+        $this->view->setVars([
+            'menu' => $menu,
+            'kategori' => $kategori,
+        ]);
+        $this->view->pick('menu/pegawai');
+    }
+
+    public function listMenuAction(){
+        $menu = $this->db->query("SELECT * FROM Menu")->fetchAll();
+        $this->view->setVars([
+            'menu' => $menu,
+            'kategori' => $kategori,
+        ]);
+        $this->view->pick('menu/listMenuPemilik');
     }
 
     public function tambahMenuAction(){
@@ -39,10 +67,10 @@ class MenuController extends Controller
             $menu->flag = $this->request->getPost('flag');
 
             if($menu->save()){
-                $this->response->redirect('pegawai/menu');
+                $this->response->redirect('admin/list-menu');
             }
         }
-    }
+    }   
 
     public function editMenuAction(){
         $dir = 'images/menu/';
@@ -60,7 +88,7 @@ class MenuController extends Controller
             $menu->gambar = $img;  
                      
             if($menu->update()){
-                $this->response->redirect('pegawai/menu');
+                $this->response->redirect('admin/list-menu');
             }
         }
     }
@@ -68,7 +96,7 @@ class MenuController extends Controller
     public function hapusMenuAction($id){
         $this->db->query("delete from Menu where id='".$id."'");
         $this->flashSession->success('Menu berhasil dihapus');
-        $this->response->redirect('/pegawai/menu');
+        $this->response->redirect('/admin/list-menu');
     }
 
     public function cobaAction(){

@@ -17,7 +17,11 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+{% for fav in favorit %}
 
+<p>{{fav['menu']}}</p>
+
+{% endfor %}
 
 </div>
 <!-- /.row -->

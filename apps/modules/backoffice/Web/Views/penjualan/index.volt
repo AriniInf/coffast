@@ -1,4 +1,4 @@
-{% extends "template/mainadmin.volt" %} {% block content %}
+ {% extends "template/mainpegawai.volt" %} {% block content %}
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -20,41 +20,33 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                         </div>
-                        <form class="form-horizontal" action="/admin/add-penjualan" method="post" enctype="multipart/form-data" role="form">
+                        <form class="form-horizontal" action="/pegawai/add-penjualan" method="post" enctype="multipart/form-data" role="form">
                             <div class="modal-body">
-                                 <div class="form-group">
-                                    <label class="col-lg-2 col-sm-2 control-label">Nama Pemesan</label>
+                                <div class="form-group">
+                                    <label class="control-label">Nama Pemesan</label>
                                     <div class="col-lg">
                                         <input type="text" class="form-control" id="nama_pemesan" name="nama_pemesan" value="" required>
                                     </div>
                                 </div>
-                               <div class="col-lg-12">
-                                <div class="col-lg-6">
                                 <div class="menu-fields">
-                                    <div class='form-group'>
-                                        <label class="col-lg-2 col-sm-2 control-label">Menu</label>
-                                        <select name='menu[]'>
-                                            {% for m in menu %}
-                                            <option value={{m.id}}>{{m.menu}}</option>
-                                            {% endfor %}
-                                        </select>
+                                    <label class="col-lg-2 col-sm-2 control-label">Pembelian</label>
+                                    <div class="col-lg">
+                                        <select class='form-control input-md' name='menu[]' id='menu' required>
+                                        <option value="">Pilih Menu</option>
+                                        {% for m in menu %}
+                                        <option value="{{m.id}}">{{m.menu}}</option>
+                                        {% endfor %}
+                                    </select>
                                     </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="jumlah-fields"> -->
+                                    <label class="col-lg-2 col-sm-2 control-label">Jumlah</label>
+                                    <input type='text' class='form-control' name='jumlah[]'>
                                 </div>
-                               </div>
-                               <div class="col-lg-6">
-                                <div class="jumlah-fields">
-                                    <div class='form-group'>
-                                        <label class="col-lg-2 col-sm-2 control-label">Jumlah</label>
-                                        <input type='text' class='form-control' name='jum[]'>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
                             </div>
                             <div class="modal-footer form-group">
                                 <button class="btn btn-info" type="submit">Simpan</button>
                                 <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
-                                 <div class="col-sm-6">
                                 <a type="button" class="btn btn-info" onclick="return myFunction()"><i class="fa fa-plus"></i><span>Tambah Menu</span></a>
                             </div>
                         </form>
@@ -67,9 +59,6 @@
     <!-- /.container-fluid -->
 </div>
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">DataTable with default features</h3>
-    </div>
     <!-- /.card-header -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
@@ -77,7 +66,7 @@
                 <tr>
                     <th>No</th>
                     <th>ID Booking</th>
-                    <th>Menu</th>
+                    <th>ID Menu</th>
                     <th>Jumlah</th>
                     <th>Total</th>
                     <th>Waktu</th>
@@ -95,53 +84,6 @@
                     <td>{{j['jumlah']}}</td>
                     <td>{{j['total']}}</td>
                     <td>{{j['waktu']}}</td>
-                    <td>
-                        <!-- <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#edit-data{{beli['id']}}"><i class="fas fa-pencil-alt">
-                        </i>Edit</button>
-
-                        <div class="modal fade" id="edit-data{{beli['id']}}">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Update Penjualan</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                    </div>
-                                    <form class="form-horizontal" action="/admin/edit-penjualan" method="post" enctype="multipart/form-data" role="form">
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <div class="col-lg">
-                                                    <input type="hidden" class="form-control" id="id" name="id" value="{{beli['id']}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-lg">
-                                                    <input type="hidden" class="form-control" id="id_produk" name="id_produk" value="{{beli['id_produk']}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-2 col-sm-2 control-label">Tanggal</label>
-                                                <div class="col-lg">
-                                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{beli['tanggal']}}" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-2 col-sm-2 control-label">Jumlah</label>
-                                                <div class="col-lg">
-                                                    <input type="text" class="form-control" id="jumlah" name="jumlah" value="{{beli['jumlah']}}" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-info" type="submit"> Simpan</button>
-                                            <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div> -->
-                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -149,7 +91,7 @@
                 <tr>
                     <th>No</th>
                     <th>ID Booking</th>
-                    <th>Menu</th>
+                    <th>ID Menu</th>
                     <th>Jumlah</th>
                     <th>Total</th>
                     <th>Waktu</th>
@@ -163,11 +105,9 @@
 
 </body>
 <script>
-function myFunction() {
-  var wrapper = $('.menu-fields');
-        var wrapper1 = $('.jumlah-fields');
-        $(wrapper).append("<div class ='form-group'><select name='menu[]''>{% for m in menu %}<option value='{{m.id}}'>{{m.menu}}</option>{% endfor %}</select></div>");
-        $(wrapper1).append("<div class='form-group'><input type='text' class='form-control' name='jum[]'></div>");
-}
+    function myFunction() {
+        var wrapper = $('.menu-fields');
+        $(wrapper).append("<div class='menu-fields'><label class='col-lg-2 col-sm-2 control-label'>Pembelian</label><div class='col-lg'><select class='form-control input-md' name='menu[]' id='menu' required><option value=''>Pilih Menu</option>{% for m in menu %}<option value='{{m.id}}'>{{m.menu}}</option>{% endfor %}</select></div></div><div class='jumlah-fields'><label class='col-lg-2 col-sm-2 control-label'>Jumlah</label><input type='text' class='form-control' name='jumlah[]'></div>");
+    }
 </script>
 {% endblock %}

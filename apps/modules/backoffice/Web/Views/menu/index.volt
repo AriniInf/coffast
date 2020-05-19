@@ -1,4 +1,5 @@
-{% extends "template/mainpegawai.volt" %} {% block content %}
+{% extends "template/mainadmin.volt" %} {% block content %}
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -20,7 +21,7 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                         </div>
-                        <form class="form-horizontal" action="/tambah-menu" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="/admin/tambah-menu" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label class="col-lg-2 col-sm-2 control-label">Kategori</label>
@@ -107,7 +108,7 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                     </div>
-                                    <form class="form-horizontal" action="/pegawai/edit-menu" method="post" enctype="multipart/form-data">
+                                    <form class="form-horizontal" action="/admin/edit-menu" method="post" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <div class="col-lg">

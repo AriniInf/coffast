@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TigaMimAlif</title>
+    <title>Coffast</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -89,27 +89,20 @@
                             <a href="/pegawai/menu" class="nav-link ">
                                 <i class="nav-icon fas fa-copy "></i>
                                 <p>
-                                    Menu
+                                    MENU
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item has-treeview ">
-                            <a href="/pegawai/list-kategori" class="nav-link ">
-                                <i class="nav-icon fas fa-chart-pie "></i>
+                            <a href="/pegawai/list-penjualan" class="nav-link ">
+                                <i class="nav-icon fas fa-copy "></i>
                                 <p>
-                                    KATEGORI
+                                    PESANAN
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview ">
-                            <a href="/pegawai/list-pegawai" class="nav-link ">
-                                <i class="nav-icon fas fa-chart-pie "></i>
-                                <p>
-                                    pegawai
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">TRANSAKSI</li>
+                        <li class="nav-header">BARANG</li>
                         <li class="nav-item has-treeview ">
                             <a href="/pegawai/list-pembelian" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
@@ -119,10 +112,10 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview ">
-                            <a href="/pegawai/list-penjualan" class="nav-link ">
+                            <a href="/pegawai/list-penggunaan" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Penjualan
+                                    Penggunaan
                                 </p>
                             </a>
                         </li>

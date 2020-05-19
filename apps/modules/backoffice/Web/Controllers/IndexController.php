@@ -16,6 +16,8 @@ class IndexController extends Controller
     }
 
     public function cobaAction(){
-        echo "ini module back coba";
+        $this->view->pick('pdf/index');
     }
+
+
 }

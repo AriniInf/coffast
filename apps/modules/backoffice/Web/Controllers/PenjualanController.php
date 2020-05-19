@@ -15,15 +15,35 @@ class PenjualanController extends Controller
 {
     public function indexAction(){
         $penjualan = $this->db->query("SELECT * FROM Penjualan")->fetchAll();
-        $menu = $this->db->query("SELECT * FROM Menu")->fetchAll();
+        $menu = Menu::find();
         $this->view->setVars([
             'menu' => $menu,
             'penjualan' => $penjualan
         ]);
-        // $this->view->pembelian=$pembelian;
-        // $this->view->barang=$barang;
+        
         $this->view->pick('penjualan/index');
-        // var_dump($pembelian,$barang);
-        // $this->view->disable();
+        
+        
     }
+
+    public function tambahPenjualanAction(){
+        $menu = $this->request->getPost('menu');
+        $jumlah = $this->request->getPost('jumlah');
+        for($i=0; $i<count($menu) ; $i++)
+        {
+            $harga = Menu::findFirst([
+            'conditions' => "id=".$menu[$i].""
+            ]);
+            // var_dump($harga);
+            $item       = new Penjualan();
+            $item->id_menu = $menu[$i];
+            $item->jumlah = $jumlah[$i];
+            $item->total = $jumlah[$i]*$harga->harga;
+            $item->waktu = date('d-m-Y');
+            // var_dump($item);
+            $item->save();
+        }
+       $this->response->redirect('/pegawai/list-penjualan');
+    }
+
 }

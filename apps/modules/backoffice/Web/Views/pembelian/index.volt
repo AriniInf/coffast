@@ -1,4 +1,4 @@
-{% extends "template/mainpegawai.volt" %} {% block content %}
+{% extends "template/mainadmin.volt" %} {% block content %}
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -25,7 +25,7 @@
                                 <div class="form-group">
                                     <label class="col-lg-2 col-sm-2 control-label">Pembelian</label>
                                     <div class="col-lg">
-                                        <select class='form-control input-md' name='id_produk' id='id_produk' required>
+                                        <select class='form-control input-md' name='id_barang' id='id_barang' required>
                                         <option value="">Pilih Produk</option>
                                         {% for b in barang %}
                                         <option value="{{b.id}}">{{b.barang}}</option>
@@ -81,7 +81,7 @@
                     <td>
                         <?php echo $no++ ?>
                     </td>
-                    <td>{{beli['pembelian']}}</td>
+                    <td>{{beli['barang']}}</td>
                     <td>{{beli['waktu']}}</td>
                     <td>{{beli['jumlah']}}</td>
                     <td> <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#edit-data{{beli['id']}}">
@@ -97,18 +97,14 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                                     </div>
-                                    <form class="form-horizontal" action="/admin/edit-pembelian" method="post" enctype="multipart/form-data" role="form">
+                                    <form class="form-horizontal" action="/admin/edit-pembelian/{{beli['id']}}" method="post" enctype="multipart/form-data" role="form">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <div class="col-lg">
                                                     <input type="hidden" class="form-control" id="id" name="id" value="{{beli['id']}}">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="col-lg">
-                                                    <input type="hidden" class="form-control" id="id_produk" name="id_produk" value="{{beli['id_barang']}}">
-                                                </div>
-                                            </div>
+
                                             <div class="form-group">
                                                 <label class="col-lg-2 col-sm-2 control-label">Tanggal</label>
                                                 <div class="col-lg">

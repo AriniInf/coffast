@@ -46,8 +46,8 @@ class AkunController extends Controller
         $user->alamat = $this->request->getPost('alamat'); 
         $user->notelp = $this->request->getPost('notelp'); 
         $user->noiden = $this->request->getPost('noiden'); 
-        $user->flag = '1';
-        $user->role = '1';
+        $user->flag = '0';
+        $user->role = '3';
         $nama = Akun::findFirst("username = '$user->username'");
         if($nama){
             $this->flashSession->error("username sudah digunakan");
